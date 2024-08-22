@@ -10,7 +10,7 @@ const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
   ssr: false,
 });
 
-export default function Home() {
+export default function InspirationalQuote() {
   const { quote, loading, error } = useQuote(
     "https://quote-of-the-day-api.vercel.app/api/inspirational"
   );
@@ -29,17 +29,29 @@ export default function Home() {
       }}
     >
       <Navbar />
-      <Container
-        maxWidth="md"
+      <Box
         sx={{
           flex: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
+          paddingTop: "64px",
+          boxSizing: "border-box",
         }}
       >
-        {error ? <div>{error}</div> : <QuoteCard quote={quote} />}
-      </Container>
+        <Container
+          maxWidth="md"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          {error ? <div>{error}</div> : <QuoteCard quote={quote} />}
+        </Container>
+      </Box>
     </Box>
   );
 }

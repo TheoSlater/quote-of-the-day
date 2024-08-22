@@ -1,4 +1,5 @@
 // components/Navbar.tsx
+
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -15,11 +16,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Link from "next/link";
-import { SxProps } from "@mui/system";
-import { Theme } from "@mui/material/styles";
-import QuoteIcon from "@mui/icons-material/FormatQuote"; // Example icon
-import InspirationalIcon from "@mui/icons-material/Star"; // Example icon
 import { Typography } from "@mui/material";
+import QuoteIcon from "@mui/icons-material/FormatQuote";
+import InspirationalIcon from "@mui/icons-material/Star";
 
 const drawerWidth = 240;
 
@@ -37,6 +36,7 @@ const AppBar = styled(MuiAppBar)(({ theme }) => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  height: "64px", // Set the height if you have a custom height
 }));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
