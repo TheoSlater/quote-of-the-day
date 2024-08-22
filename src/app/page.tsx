@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { quotes } from "./hooks/quotes";
 import QuoteCard from "./components/QuoteCard";
 import dynamic from "next/dynamic";
+import Navbar from "./components/Navbar";
 
 const LoadingSpinner = dynamic(() => import("./components/LoadingSpinner"), {
   ssr: false,
@@ -28,7 +29,7 @@ export default function Home() {
 
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [quote]);
@@ -38,18 +39,21 @@ export default function Home() {
   }
 
   return (
-    <Container maxWidth="md">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-        }}
-      >
-        <QuoteCard quote={quote} />
-      </Box>
-    </Container>
+    <Box sx={{ display: "flex" }}>
+      <Navbar />
+      <Container maxWidth="md">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+          }}
+        >
+          <QuoteCard quote={quote} />
+        </Box>
+      </Container>
+    </Box>
   );
 }

@@ -1,10 +1,8 @@
-// components/LoadingSpinner.tsx
-"use client"; // Ensure this file runs only on the client
+"use client";
 
 import React, { useEffect } from "react";
 import { grid } from "ldrs";
 
-// Register the grid component only in the client side
 if (typeof window !== "undefined") {
   grid.register();
 }
