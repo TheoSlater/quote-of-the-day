@@ -1,23 +1,16 @@
-"use client";
+// pages/loading/page.tsx
+"use client"; // Ensure this file runs only on the client
+
 import React from "react";
-import { grid } from "ldrs";
+import dynamic from "next/dynamic";
 
-grid.register();
+// Dynamically import the LoadingSpinner component with { ssr: false }
+const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
+  ssr: false,
+});
 
-export default function LoadingPage() {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        backgroundColor: "black",
-        color: "white",
-      }}
-    >
-      {/* Make sure to include the script for l-grid component or use a similar client-side spinner */}
-      <l-grid size="60" speed="1.5" color="white"></l-grid>
-    </div>
-  );
-}
+const LoadingPage = () => {
+  return <LoadingSpinner />;
+};
+
+export default LoadingPage;

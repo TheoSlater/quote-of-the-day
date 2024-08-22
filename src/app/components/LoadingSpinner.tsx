@@ -1,8 +1,13 @@
-"use client";
-import React from "react";
+// components/LoadingSpinner.tsx
+"use client"; // Ensure this file runs only on the client
+
+import React, { useEffect } from "react";
 import { grid } from "ldrs";
 
-grid.register();
+// Register the grid component only in the client side
+if (typeof window !== "undefined") {
+  grid.register();
+}
 
 const LoadingSpinner = () => {
   return (
@@ -12,6 +17,7 @@ const LoadingSpinner = () => {
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
+        backgroundColor: "black",
         color: "white",
       }}
     >
