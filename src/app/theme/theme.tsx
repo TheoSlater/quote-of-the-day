@@ -8,7 +8,7 @@ export const theme = createTheme({
       dark: "#242424",
     },
     secondary: {
-      main: "#f50057",
+      main: "#1c1c1c",
     },
     divider: "rgba(74,74,74,0.12)",
   },
