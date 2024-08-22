@@ -23,43 +23,19 @@ import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
-  open?: boolean;
-}>(({ theme, open }) => ({
+const Main = styled("main")(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
-  transition: theme.transitions.create("margin", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  marginLeft: `-${drawerWidth}px`,
-  ...(open && {
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  }),
 }));
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
+const AppBar = styled(MuiAppBar)(({ theme }) => ({
+  transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
   }),
 }));
 
@@ -86,7 +62,7 @@ export default function Navbar() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -128,31 +104,33 @@ export default function Navbar() {
           </IconButton>
         </DrawerHeader>
         <List>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ width: "100%" }}>
             <Link
               href="/"
               passHref
-              style={{ textDecoration: "none", color: "inherit" }}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+              }}
             >
-              <ListItemButton
-                component="a"
-                sx={{ justifyContent: "flex-start", width: "100%" }}
-              >
+              <ListItemButton component="a" sx={{ width: "100%" }}>
                 <QuoteIcon sx={{ mr: 2 }} />
                 <ListItemText primary="Quote of the Day" />
               </ListItemButton>
             </Link>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ width: "100%" }}>
             <Link
               href="/inspirationalQuote"
               passHref
-              style={{ textDecoration: "none", color: "inherit" }}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+              }}
             >
-              <ListItemButton
-                component="a"
-                sx={{ justifyContent: "flex-start", width: "100%" }}
-              >
+              <ListItemButton component="a" sx={{ width: "100%" }}>
                 <InspirationalIcon sx={{ mr: 2 }} />
                 <ListItemText primary="Inspirational Quotes" />
               </ListItemButton>
@@ -160,7 +138,7 @@ export default function Navbar() {
           </ListItem>
         </List>
       </Drawer>
-      <Main open={open}>
+      <Main>
         <DrawerHeader />
       </Main>
     </Box>

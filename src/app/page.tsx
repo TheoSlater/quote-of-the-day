@@ -32,27 +32,32 @@ export default function Home() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [quote]);
+  }, []);
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    >
       <Navbar />
-      <Container maxWidth="md">
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100vh",
-          }}
-        >
-          <QuoteCard quote={quote} />
-        </Box>
+      <Container
+        maxWidth="md"
+        sx={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <QuoteCard quote={quote} />
       </Container>
     </Box>
   );
