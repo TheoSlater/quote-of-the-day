@@ -8,7 +8,6 @@ interface ShareMenuProps {
   onClose: () => void;
 }
 
-// Create a styled version of the Menu component
 const StyledMenu = styled(Menu)(({ theme }) => ({
   width: "200px",
 }));
@@ -31,13 +30,12 @@ export default function ShareMenu({ anchorEl, open, onClose }: ShareMenuProps) {
         })
         .catch((error) => console.error("Failed to copy:", error));
     }
-    onClose(); // Close the menu after sharing
+    onClose();
   }, [onClose]);
 
   return (
     <StyledMenu anchorEl={anchorEl} open={open} onClose={onClose}>
       <MenuItem onClick={handleShare}>Share</MenuItem>
-      {/* Add more menu items here if needed */}
     </StyledMenu>
   );
 }

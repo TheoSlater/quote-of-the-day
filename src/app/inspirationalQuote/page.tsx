@@ -4,10 +4,10 @@
 
 import { Container, Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import { quotes } from "./hooks/quotes";
-import QuoteCard from "./components/QuoteCard";
+import { inspirationalQuotes } from "../hooks/inspirationalQuotes";
+import QuoteCard from "../components/QuoteCard";
 
-export default function Home() {
+export default function InspirationalQuote() {
   const [quote, setQuote] = useState("");
 
   useEffect(() => {
@@ -18,10 +18,10 @@ export default function Home() {
     const oneDay = 1000 * 60 * 60 * 24;
     const dayOfYear = Math.floor(diff / oneDay);
 
-    const quoteIndex = dayOfYear % quotes.length;
+    const quoteIndex = dayOfYear % inspirationalQuotes.length;
 
-    setQuote(quotes[quoteIndex]);
-  }, [quote]);
+    setQuote(inspirationalQuotes[quoteIndex]);
+  }, []);
 
   return (
     <Container maxWidth="md">

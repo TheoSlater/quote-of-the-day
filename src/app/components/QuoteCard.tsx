@@ -42,7 +42,7 @@ export default function QuoteCard({ quote }: QuoteCardProps) {
           position: "absolute",
           bottom: 16,
           right: 16,
-          zIndex: 1, // Ensure button is on top
+          zIndex: 1,
         }}
         aria-label="more options"
       >
