@@ -12,7 +12,7 @@ const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
 
 export default function Home() {
   const { quote, loading, error } = useQuote(
-    "http://quote-of-the-day-api.vercel.app/api/inspirational"
+    "https://quote-of-the-day-api.vercel.app/api/inspirational"
   );
 
   if (loading) {
