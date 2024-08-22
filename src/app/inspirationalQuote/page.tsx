@@ -1,38 +1,19 @@
 "use client";
 
 import { Container, Box } from "@mui/material";
-import { useEffect, useState } from "react";
-import { inspirationalQuotes } from "../hooks/inspirationalQuotes";
-import QuoteCard from "../components/QuoteCard";
 import dynamic from "next/dynamic";
+import QuoteCard from "../components/QuoteCard";
 import Navbar from "../components/Navbar";
+import { useQuote } from "../hooks/useQuote";
 
 const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
   ssr: false,
 });
 
 export default function Home() {
-  const [quote, setQuote] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const today = new Date();
-
-    const startOfYear = new Date(today.getFullYear(), 0, 0);
-    const diff = today.getTime() - startOfYear.getTime();
-    const oneDay = 1000 * 60 * 60 * 24;
-    const dayOfYear = Math.floor(diff / oneDay);
-
-    const quoteIndex = dayOfYear % inspirationalQuotes.length;
-
-    setQuote(inspirationalQuotes[quoteIndex]);
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const { quote, loading, error } = useQuote(
+    "http://localhost:3001/api/inspirational"
+  );
 
   if (loading) {
     return <LoadingSpinner />;
@@ -57,17 +38,7 @@ export default function Home() {
           justifyContent: "center",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <QuoteCard quote={quote} />
-        </Box>
+        {error ? <div>{error}</div> : <QuoteCard quote={quote} />}
       </Container>
     </Box>
   );
