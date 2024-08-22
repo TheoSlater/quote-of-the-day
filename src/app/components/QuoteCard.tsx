@@ -1,7 +1,7 @@
 "use client";
 
 import { Typography, Box, Paper, IconButton } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import { useState } from "react";
 import ShareMenu from "./ShareMenu";
 
@@ -46,7 +46,7 @@ export default function QuoteCard({ quote }: QuoteCardProps) {
         }}
         aria-label="more options"
       >
-        <MoreVertIcon />
+        <ReplyOutlinedIcon />
       </IconButton>
       <ShareMenu anchorEl={anchorEl} open={open} onClose={handleMenuClose} />
     </Paper>
