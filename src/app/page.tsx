@@ -1,14 +1,18 @@
-// Home.tsx
-
 "use client";
 
 import { Container, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { quotes } from "./hooks/quotes";
 import QuoteCard from "./components/QuoteCard";
+import dynamic from "next/dynamic";
+
+const LoadingSpinner = dynamic(() => import("./components/LoadingSpinner"), {
+  ssr: false,
+});
 
 export default function Home() {
   const [quote, setQuote] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const today = new Date();
@@ -21,7 +25,17 @@ export default function Home() {
     const quoteIndex = dayOfYear % quotes.length;
 
     setQuote(quotes[quoteIndex]);
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, [quote]);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <Container maxWidth="md">
