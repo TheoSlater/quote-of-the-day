@@ -24,19 +24,20 @@ export default function Home() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100vh", // Full height of the viewport
+        height: "100%", // Changed from 100vh
+        minHeight: "100vh", // Ensures full height even with browser UI considered
         overflow: "hidden",
       }}
     >
       <Navbar />
       <Box
         sx={{
-          flex: 1, // Fills the remaining height after the Navbar
+          flex: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
-          padding: "0 16px", // Prevents horizontal overflow
+          padding: "0 16px",
           boxSizing: "border-box",
         }}
       >
@@ -46,7 +47,7 @@ export default function Home() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "calc(100vh - 64px)", // Adjust height to account for the Navbar
+            height: "100%", // Changed from calc(100vh - 64px)
           }}
         >
           {error ? <div>{error}</div> : <QuoteCard quote={quote} />}

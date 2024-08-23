@@ -62,7 +62,7 @@ export default function Navbar() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed">
+      <AppBar>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -90,7 +90,6 @@ export default function Navbar() {
             backgroundColor: theme.palette.primary.dark,
           },
         }}
-        variant="persistent"
         anchor="left"
         open={open}
       >
