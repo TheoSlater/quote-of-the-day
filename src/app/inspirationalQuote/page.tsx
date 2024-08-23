@@ -24,8 +24,7 @@ export default function Home() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100%", // Changed from 100vh
-        minHeight: "100vh", // Ensures full height even with browser UI considered
+        height: "100vh", // Set height to 100vh to ensure it covers the full viewport
         overflow: "hidden",
       }}
     >
@@ -36,7 +35,6 @@ export default function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          overflow: "hidden",
           padding: "0 16px",
           boxSizing: "border-box",
         }}
@@ -47,7 +45,7 @@ export default function Home() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "100%", // Changed from calc(100vh - 64px)
+            height: "100%", // Ensures the container takes up the full height
           }}
         >
           {error ? <div>{error}</div> : <QuoteCard quote={quote} />}
