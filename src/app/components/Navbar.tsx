@@ -15,11 +15,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Link from "next/link";
-import { SxProps } from "@mui/system";
-import { Theme } from "@mui/material/styles";
-import QuoteIcon from "@mui/icons-material/FormatQuote"; // Example icon
-import InspirationalIcon from "@mui/icons-material/Star"; // Example icon
-import { Typography } from "@mui/material";
+import QuoteIcon from "@mui/icons-material/FormatQuote";
+import InspirationalIcon from "@mui/icons-material/Star";
+import GridOnIcon from "@mui/icons-material/GridOn";
+import ChairIcon from "@mui/icons-material/Chair"; // TODO: Find a better icon
 
 const drawerWidth = 240;
 
@@ -132,6 +131,38 @@ export default function Navbar() {
               <ListItemButton component="a" sx={{ width: "100%" }}>
                 <InspirationalIcon sx={{ mr: 2 }} />
                 <ListItemText primary="Inspirational Quotes" />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem disablePadding sx={{ width: "100%" }}>
+            <Link
+              href="/comfortingQuotes"
+              passHref
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+              }}
+            >
+              <ListItemButton component="a" sx={{ width: "100%" }}>
+                <ChairIcon sx={{ mr: 2 }} />
+                <ListItemText primary="Comforting Quotes" />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem disablePadding sx={{ width: "100%" }}>
+            <Link
+              href="/multipleQuotes"
+              passHref
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+              }}
+            >
+              <ListItemButton component="a" sx={{ width: "100%" }}>
+                <GridOnIcon sx={{ mr: 2 }} />
+                <ListItemText primary="Multiple Quotes" />
               </ListItemButton>
             </Link>
           </ListItem>

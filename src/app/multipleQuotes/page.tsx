@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Box } from "@mui/material";
+import { Container, Box, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import QuoteCard from "../components/QuoteCard";
 import Navbar from "../components/Navbar";
@@ -10,12 +10,19 @@ const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
   ssr: false,
 });
 
-export default function InspirationalQuote() {
-  const { quote, loading, error } = useQuote(
-    "https://quote-of-the-day-api.vercel.app/api/inspirational"
-  );
+export default function MultipleQuotes() {
+  const {
+    quote: quote1,
+    loading: loading1,
+    error: error1,
+  } = useQuote("https://quote-of-the-day-api.vercel.app/api/inspirational");
+  const {
+    quote: quote2,
+    loading: loading2,
+    error: error2,
+  } = useQuote("https://quote-of-the-day-api.vercel.app/api/standard");
 
-  if (loading) {
+  if (loading1 || loading2) {
     return <LoadingSpinner />;
   }
 
@@ -48,7 +55,10 @@ export default function InspirationalQuote() {
             height: "100%",
           }}
         >
-          {error ? <div>{error}</div> : <QuoteCard quote={quote} />}
+          <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+            {error1 ? <div>{error1}</div> : <QuoteCard quote={quote1} />}
+            {error2 ? <div>{error2}</div> : <QuoteCard quote={quote2} />}
+          </Stack>
         </Container>
       </Box>
     </Box>

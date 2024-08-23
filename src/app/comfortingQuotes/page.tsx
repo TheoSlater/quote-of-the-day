@@ -2,17 +2,17 @@
 
 import { Container, Box } from "@mui/material";
 import dynamic from "next/dynamic";
-import QuoteCard from "./components/QuoteCard";
-import Navbar from "./components/Navbar";
-import { useQuote } from "./hooks/useQuote";
+import QuoteCard from "../components/QuoteCard";
+import Navbar from "../components/Navbar";
+import { useQuote } from "../hooks/useQuote";
 
-const LoadingSpinner = dynamic(() => import("./components/LoadingSpinner"), {
+const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
   ssr: false,
 });
 
-export default function Home() {
+export default function ComfortingQuote() {
   const { quote, loading, error } = useQuote(
-    "https://quote-of-the-day-api.vercel.app/api/standard"
+    "https://quote-of-the-day-api.vercel.app/api/comforting"
   );
 
   if (loading) {
